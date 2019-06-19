@@ -15,7 +15,6 @@ import java.util.Optional;
 public class MultiTenantMongoFactory extends SimpleMongoDbFactory {
 
 	@Autowired
-	@Qualifier("catalog")
 	private CatalogService catalogService;
 
 	public MultiTenantMongoFactory(MongoClientURI uri) {
