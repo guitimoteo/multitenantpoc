@@ -25,7 +25,7 @@ public class MongoDbConfiguration {
         return new MongoTemplate(mongoDbFactory());
     }
 
-    @Bean(name = "catalog")
+    @Bean(name = "catalogMongoTemplate")
     public MongoTemplate mongoTemplateCatalog() throws UnknownHostException {
         return new MongoTemplate(new SimpleMongoDbFactory(new MongoClientURI("mongodb://localhost:27017/catalog")));
     }

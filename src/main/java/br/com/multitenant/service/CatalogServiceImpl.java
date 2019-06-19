@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("catalog")
 public class CatalogServiceImpl implements CatalogService {
 
     @Autowired
@@ -16,7 +15,10 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     public String findDatabase(Long id) {
         return catalogRepository.findById(id)
-                                .map(Catalog::getDatabase)
-                                .orElseThrow(() -> new IllegalArgumentException("Tenant id not found"));
+                .map(Catalog::getDatabase)
+                .orElseThrow(() -> new IllegalArgumentException("Tenant id not found"));
     }
 }
+
+
+
