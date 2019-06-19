@@ -4,7 +4,7 @@ package br.com.multitenant.config;
  * during request processing.
  */
 public class CurrentMongoConfigHolder {
-/*
+    /*
 	private static final ThreadLocal<MongoConnectionConfig> CURRENT_CONFIG = new InheritableThreadLocal<>();
 
 	public static MongoConnectionConfig get() {

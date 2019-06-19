@@ -1,18 +1,10 @@
 package br.com.multitenant.filter;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * Authentication filter that requires tenant identifier to be passed with the request
  * and authenticates users based on their state and roles inside tenant.
  */
-public class TenantAuthenticationFilter extends BasicAuthenticationFilter {
+public class TenantAuthenticationFilter { /* extends BasicAuthenticationFilter {
 
 	public static final String TENANT_HTTP_HEADER = "X-Tenant";
 
@@ -27,5 +19,5 @@ public class TenantAuthenticationFilter extends BasicAuthenticationFilter {
 		//   1) Tenant identifier is passed via "X-Tenant" HTTP header
 		//   2) There is no authenticated user in the security context
 		return tenantId == null || SecurityContextHolder.getContext().getAuthentication() != null;
-	}
+	}*/
 }

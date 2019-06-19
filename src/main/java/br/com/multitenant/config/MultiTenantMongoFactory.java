@@ -3,6 +3,7 @@ package br.com.multitenant.config;
 import br.com.multitenant.service.CatalogService;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
@@ -12,6 +13,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.Optional;
 
+@Slf4j
 public class MultiTenantMongoFactory extends SimpleMongoDbFactory {
 
 	@Autowired
@@ -24,9 +26,10 @@ public class MultiTenantMongoFactory extends SimpleMongoDbFactory {
 	@Override
 	public MongoDatabase getDb() throws DataAccessException {
 		// Check the RequestContext
+		log.info("MultiTenantMongoFactory");
 		return Optional.of(RequestContextHolder.getRequestAttributes().getAttribute("tenantId", RequestAttributes.SCOPE_REQUEST))
-					   .filter(t -> t instanceof String)
-					   .map(t -> getDb(catalogService.findDatabase(Long.getLong(t.toString()))))
+					   .filter(t -> t instanceof Long)
+					   .map(t -> getDb(catalogService.findDatabase((Long) t)))
 				       .get();
 	}
 }
