@@ -6,8 +6,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
-    volumes: 
-        - ./:/data/
+      MONGO_INITDB_DATABASE: catalog
+    volumes:
+        - ./target:/data/
     ports:
         - "27017:27017"
-
+    #command: mongo -u root -p password --eval 'use catalog'
