@@ -25,8 +25,6 @@ public class ProductController {
     public List<ProductDto> listProduct() {
         // Inject tenantId in the request
         log.info("inicio do tenant");
-        RequestContextHolder.getRequestAttributes().setAttribute("tenantId",2L, RequestAttributes.SCOPE_REQUEST);
-        productService.findProducts();
-        return null;
+        return productService.findProducts();
     }
 }
