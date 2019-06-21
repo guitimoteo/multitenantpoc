@@ -17,7 +17,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     public String findDatabase(Long id) {
-        return Optional.of(template.findById(id, Catalog.class))
+        return Optional.ofNullable(template.findById(id, Catalog.class))
                        .map(Catalog::getDatabase)
                        .orElseThrow(() -> new IllegalArgumentException("Tenant id not found"));
     }
