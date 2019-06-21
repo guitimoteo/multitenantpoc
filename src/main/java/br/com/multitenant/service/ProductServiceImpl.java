@@ -19,9 +19,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDto> findProducts() {
         log.info("product catalog");
-        return ((List<Product>)productRepository.findAll())
-                                                .stream()
-                                                .map(p -> new ProductDto(p))
-                                                .collect(Collectors.toList());
+        log.info("productRepository {}", productRepository.count());
+        productRepository.findAll().forEach(p -> log.info(String.valueOf(p)));
+        return ((List<Product>) productRepository.findAll())
+                                                 .stream()
+                                                 .map(p -> new ProductDto(p))
+                                                 .collect(Collectors.toList());
     }
 }
