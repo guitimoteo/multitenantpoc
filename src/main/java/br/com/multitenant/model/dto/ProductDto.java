@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class ProductDto {
-    private Long sku;
+    private long sku;
     public ProductDto(Product product) {
         this.sku = product.getSku();
     }
