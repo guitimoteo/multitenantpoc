@@ -17,7 +17,7 @@ public class MongoDbConfiguration {
 
     @Bean
     public MongoDbFactory mongoDbFactory() throws UnknownHostException {
-        MongoClientURI mongoClientURI = new MongoClientURI("mongodb://root:password@localhost:27017/catalog");
+        MongoClientURI mongoClientURI = new MongoClientURI("mongodb://root:password@localhost:27017/admin");
         return new MultiTenantMongoFactory(mongoClientURI);
     }
 
