@@ -26,4 +26,14 @@ public class ProductServiceImpl implements ProductService {
                                                  .map(p -> new ProductDto(p))
                                                  .collect(Collectors.toList());
     }
+
+    @Override
+    public void saveProduct(ProductDto productDto) {
+        productRepository.save(new Product(productDto));
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+
+    }
 }
