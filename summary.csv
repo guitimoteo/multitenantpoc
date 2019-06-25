@@ -1,0 +1,4 @@
+Label,# Samples,Average,Min,Max,Std. Dev.,Error %,Throughput,Received KB/sec,Sent KB/sec,Avg. Bytes
+GET products,1845,86,3,518,62.44,0.271%,50.32733,998.79,17.84,20322.3
+POST products,1840,7,2,293,13.88,0.000%,50.26910,3.58,19.98,73.0
+TOTAL,3685,46,2,518,60.06,0.136%,100.51828,1002.37,37.79,10211.4
