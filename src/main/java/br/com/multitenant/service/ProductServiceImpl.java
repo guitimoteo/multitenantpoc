@@ -18,8 +18,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDto> findProducts() {
-        log.info("product catalog");
-        log.info("productRepository {}", productRepository.count());
+        log.info("findProducts");
         productRepository.findAll().forEach(p -> log.info(String.valueOf(p)));
         return ((List<Product>) productRepository.findAll())
                                                  .stream()
@@ -34,6 +33,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteProduct(Long id) {
-
+        productRepository.deleteBySku(id);
     }
 }

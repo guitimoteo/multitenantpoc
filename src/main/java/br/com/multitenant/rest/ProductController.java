@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController()
-@RequestMapping("products")
+@RequestMapping(value = "products", consumes = "application/json", produces = "application/json")
 public class ProductController {
 
     @Autowired

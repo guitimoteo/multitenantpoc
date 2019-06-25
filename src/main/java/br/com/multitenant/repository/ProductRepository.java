@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("catalog")
 public interface ProductRepository extends CrudRepository<Product, Long> {
+    void deleteBySku(Long sku);
 }
