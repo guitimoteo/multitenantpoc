@@ -14,7 +14,11 @@ public class Product {
     @Field("sku")
     private long sku;
 
+    @Field("value")
+    private float value;
+
     public Product(ProductDto productDto) {
         this.sku = productDto.getSku();
+        this.value = productDto.getValue();
     }
 }
