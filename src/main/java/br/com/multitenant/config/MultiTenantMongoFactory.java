@@ -25,8 +25,14 @@ public class MultiTenantMongoFactory extends SimpleMongoDbFactory {
 	@Override
 	public MongoDatabase getDb() throws DataAccessException {
 		// Check the RequestContext
-		log.info("MultiTenantMongoFactory");
-		return Optional.of(RequestContextHolder.getRequestAttributes().getAttribute("tenantId", RequestAttributes.SCOPE_REQUEST))
+		log.debug("MultiTenantMongoFactory");
+		Object tenantId;
+		try {
+			tenantId = RequestContextHolder.getRequestAttributes().getAttribute("tenantId", RequestAttributes.SCOPE_REQUEST);
+		} catch (NullPointerException e) {
+			tenantId = "1";// Somente para evitar erro ao iniciar a aplicacao.
+		}
+		return Optional.of(tenantId)
 					   .filter(t -> t instanceof String)
 					   .map(t -> getDb(catalogService.findDatabase(Long.valueOf(t.toString()))))
 				       .get();
