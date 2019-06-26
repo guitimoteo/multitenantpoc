@@ -19,7 +19,7 @@ public class TenantInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("Interceptando a requisicao: {}", request.getHeader(TENANT_HEADER));
+        log.debug("Interceptando a requisicao: {}", request.getHeader(TENANT_HEADER));
         RequestContextHolder.getRequestAttributes().setAttribute("tenantId", request.getHeader(TENANT_HEADER), RequestAttributes.SCOPE_REQUEST);
         return true;
     }

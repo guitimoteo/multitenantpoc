@@ -2,8 +2,11 @@ package br.com.multitenant.model.entity;
 
 import br.com.multitenant.model.dto.ProductDto;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -11,7 +14,11 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @NoArgsConstructor
 @Document("products")
 public class Product {
-    @Field("sku")
+    @Id
+    @Getter
+    private ObjectId id;
+
+    @Indexed(unique = true ,name = "sku")
     private long sku;
 
     @Field("value")
