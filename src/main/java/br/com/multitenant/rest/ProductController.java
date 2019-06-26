@@ -20,7 +20,7 @@ public class ProductController {
 
     @GetMapping
     public List<ProductDto> listProduct() {
-        log.info("inicio do tenant");
+        log.debug("inicio do tenant");
         return productService.findProducts();
     }
 
@@ -32,7 +32,7 @@ public class ProductController {
 
     @PutMapping
     public ResponseEntity updateProduct(@RequestBody ProductDto productDto) {
-        productService.saveProduct(productDto);
+        productService.updateProduct(productDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
