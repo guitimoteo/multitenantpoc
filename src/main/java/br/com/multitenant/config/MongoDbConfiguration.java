@@ -7,9 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.web.context.request.RequestContextListener;
-
-import java.net.UnknownHostException;
 
 @Configuration
 @EnableMongoRepositories(basePackageClasses = ProductRepository.class,
@@ -17,13 +14,13 @@ import java.net.UnknownHostException;
 public class MongoDbConfiguration {
 
     @Bean
-    public MongoDbFactory mongoDbFactory() throws UnknownHostException {
+    public MongoDbFactory mongoDbFactory() {
         MongoClientURI mongoClientURI = new MongoClientURI("mongodb://root:password@localhost:27017/admin");
         return new MultiTenantMongoFactory(mongoClientURI);
     }
 
     @Bean(name = "tenant")
-    public MongoTemplate mongoTemplate() throws UnknownHostException {
+    public MongoTemplate mongoTemplate() {
         return new MongoTemplate(mongoDbFactory());
     }
 }

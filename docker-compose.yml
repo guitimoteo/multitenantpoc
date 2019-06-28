@@ -12,3 +12,8 @@ services:
     ports:
         - "27017:27017"
     #command: mongo -u root -p password --eval 'use catalog'
+  redis:
+    image: redis
+    container_name: cache
+    ports:
+      - "6379:6379"
